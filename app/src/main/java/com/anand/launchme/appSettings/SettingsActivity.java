@@ -42,7 +42,6 @@ public class SettingsActivity extends Activity {
         gridNoArrayList.add(6);
         gridNoArrayList.add(7);
         gridNoArrayList.add(8);
-        gridNoArrayList.add(9);
 
 
         ArrayAdapter<Integer> gridNoArrayAdapter = new ArrayAdapter<Integer>(SettingsActivity.this,
