@@ -1,5 +1,6 @@
 package com.anand.launchme.home;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.WallpaperManager;
@@ -22,6 +23,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -80,18 +82,15 @@ public class MainActivity extends Activity implements SimpleGestureFilter.Simple
 
         imageView.startAnimation(startAnimation);
 
+
+        ActivityCompat.requestPermissions(MainActivity.this,
+                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                1);
+
         final LayoutAnimationController controller = new LayoutAnimationController(startAnimation, 0.2f);
 
 
-        WallpaperManager wallpaperManager = WallpaperManager.getInstance(this);
-        final Drawable wallpaperDrawable = wallpaperManager.getDrawable();
-        relativeLayout.post(new Runnable() {
 
-            @Override
-            public void run() {
-                relativeLayout.setBackground(wallpaperDrawable);
-            }
-        });
 
     }
 
@@ -238,6 +237,40 @@ public class MainActivity extends Activity implements SimpleGestureFilter.Simple
     public void onBackPressed() {
         detector.setEnabled(true);
         rootCardView.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 1: {
+
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    WallpaperManager wallpaperManager = WallpaperManager.getInstance(this);
+                    final Drawable wallpaperDrawable = wallpaperManager.getDrawable();
+                    relativeLayout.post(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            relativeLayout.setBackground(wallpaperDrawable);
+                        }
+                    });
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                } else {
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                    Toast.makeText(MainActivity.this, "Permission denied to read your External storage", Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
     }
 
 }
