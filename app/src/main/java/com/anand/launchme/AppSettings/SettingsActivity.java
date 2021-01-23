@@ -1,4 +1,4 @@
-package com.anand.launchme.appSettings;
+package com.anand.launchme.AppSettings;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,6 +11,7 @@ import android.widget.Spinner;
 
 import com.anand.launchme.Apps.GetApps;
 import com.anand.launchme.R;
+import com.anand.launchme.Utills.AppPreferences;
 import com.anand.launchme.Utills.PreferenceManager;
 
 import java.util.ArrayList;
@@ -55,6 +56,7 @@ public class SettingsActivity extends Activity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 preferenceManager.setSelection(position);
                 tutorialsName = parent.getItemAtPosition(position).toString();
+                AppPreferences.getInstance(getApplicationContext()).put(AppPreferences.Key.GRID_NO,tutorialsName);
 
             }
 
@@ -62,6 +64,7 @@ public class SettingsActivity extends Activity {
             public void onNothingSelected(AdapterView<?> parent) {
                 gridNospinner.setSelection(preferenceManager.getSelection());
                 prefPosition = preferenceManager.getSelection();
+                AppPreferences.getInstance(getApplicationContext()).put(AppPreferences.Key.GRID_NO,String.valueOf(prefPosition));
             }
         });
 

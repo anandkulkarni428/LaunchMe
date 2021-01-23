@@ -1,4 +1,4 @@
-package com.anand.launchme.adadters;
+package com.anand.launchme.Adadters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,7 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.anand.launchme.R;
-import com.anand.launchme.appinfo.AppInfo;
+import com.anand.launchme.Appinfo.AppInfo;
 
 import java.util.ArrayList;
 import java.util.List;

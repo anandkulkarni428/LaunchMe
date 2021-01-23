@@ -1,4 +1,4 @@
-package com.anand.launchme.home;
+package com.anand.launchme.Home;
 
 import android.Manifest;
 import android.app.Activity;
@@ -29,9 +29,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.anand.launchme.Apps.GetApps;
 import com.anand.launchme.R;
+import com.anand.launchme.Utills.AppPreferences;
 import com.anand.launchme.Utills.PreferenceManager;
-import com.anand.launchme.adadters.myListAdap;
-import com.anand.launchme.appinfo.AppInfo;
+import com.anand.launchme.Adadters.myListAdap;
+import com.anand.launchme.Appinfo.AppInfo;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -159,7 +160,21 @@ public class MainActivity extends Activity implements SimpleGestureFilter.Simple
     public void showApps() {
         Intent i = new Intent(MainActivity.this, GetApps.class);
         i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        i.putExtra("GRID_NO", "5");
+
+        if (gridCount == null){
+            if (AppPreferences.Key.GRID_NO == null){
+                gridCount = "5";
+            }else {
+                gridCount = AppPreferences.getInstance(getApplicationContext()).getString(AppPreferences.Key.GRID_NO);
+            }
+
+        }else {
+            gridCount = AppPreferences.getInstance(getApplicationContext()).getString(AppPreferences.Key.GRID_NO);
+        }
+
+        Log.d("TAG_NULL",gridCount+"");
+
+        i.putExtra("GRID_NO", gridCount);
         startActivity(i);
     }
 

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/grade_4"
-    tools:context=".home.MainActivity">
+    tools:context=".Home.MainActivity">
 
 
     <androidx.cardview.widget.CardView

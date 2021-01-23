@@ -1,4 +1,4 @@
-package com.anand.launchme.home;
+package com.anand.launchme.Home;
 
 import android.app.Activity;
 import android.view.GestureDetector;

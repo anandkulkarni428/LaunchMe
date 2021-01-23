@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".appSettings.SettingsActivity"
+    tools:context=".AppSettings.SettingsActivity"
     android:background="@color/white">
 
     <LinearLayout

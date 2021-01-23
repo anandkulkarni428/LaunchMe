@@ -26,10 +26,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.anand.launchme.R;
-import com.anand.launchme.adadters.myListAdap;
-import com.anand.launchme.appSettings.SettingsActivity;
-import com.anand.launchme.appinfo.AppInfo;
-import com.anand.launchme.home.MainActivity;
+import com.anand.launchme.Adadters.myListAdap;
+import com.anand.launchme.AppSettings.SettingsActivity;
+import com.anand.launchme.Appinfo.AppInfo;
+import com.anand.launchme.Home.MainActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
