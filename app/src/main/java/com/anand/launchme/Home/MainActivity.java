@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -89,8 +90,6 @@ public class MainActivity extends Activity implements SimpleGestureFilter.Simple
                 1);
 
         final LayoutAnimationController controller = new LayoutAnimationController(startAnimation, 0.2f);
-
-
 
 
     }
@@ -161,18 +160,18 @@ public class MainActivity extends Activity implements SimpleGestureFilter.Simple
         Intent i = new Intent(MainActivity.this, GetApps.class);
         i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 
-        if (gridCount == null){
-            if (AppPreferences.Key.GRID_NO == null){
+        if (gridCount == null) {
+            if (AppPreferences.Key.GRID_NO == null) {
                 gridCount = "5";
-            }else {
+            } else {
                 gridCount = AppPreferences.getInstance(getApplicationContext()).getString(AppPreferences.Key.GRID_NO);
             }
 
-        }else {
+        } else {
             gridCount = AppPreferences.getInstance(getApplicationContext()).getString(AppPreferences.Key.GRID_NO);
         }
 
-        Log.d("TAG_NULL",gridCount+"");
+        Log.d("TAG_NULL", gridCount + "");
 
         i.putExtra("GRID_NO", gridCount);
         startActivity(i);
@@ -276,9 +275,11 @@ public class MainActivity extends Activity implements SimpleGestureFilter.Simple
                     // contacts-related task you need to do.
                 } else {
 
+                    relativeLayout.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.wallpaper_1));
+
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
-                    Toast.makeText(MainActivity.this, "Permission denied to read your External storage", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Permission denied to read your External storage so you cannot set your own wallpaper", Toast.LENGTH_LONG).show();
                 }
                 return;
             }
