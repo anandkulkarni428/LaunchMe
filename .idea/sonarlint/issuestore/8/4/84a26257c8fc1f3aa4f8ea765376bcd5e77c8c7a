@@ -1,0 +1,39 @@
+
+u
+java:S1450+"XRemove the "imageView" field and declare it as a local variable in the relevant methods.(øû¯8©ÂšÔò.
+w
+java:S2293Õ"YReplace the type specification in this constructor call with the diamond operator ("<>").(¯¦Ûç8ŞÖ™Óò.
+O
+java:S10688"-Remove this unused "gridCount" private field.(ÔùÏÄøÿÿÿÿ8«ï›Ôò.
+
+java:S14500"]Remove the "startAnimation" field and declare it as a local variable in the relevant methods.(ÿöÿÿÿÿÿ8ù‹‚Óò.
+C	java:S131p""Add a default case to this switch.(Æóõµıÿÿÿÿ8ù‹‚Óò.
+c
+java:S2147‹"ECombine this catch with the one at line 133, which has the same body.(åşáÿ8ù‹‚Óò.
+J
+java:S1604X"(Make this anonymous inner class a lambda(·®µÇıÿÿÿÿ8ù‹‚Óò.
+R
+java:S10684"5Remove this unused "preferenceManager" private field.(ËĞ«š8»ÓÛÓò.
+{
+java:S14503"_Remove the "mActivityManager" field and declare it as a local variable in the relevant methods.(ØÁë,8¸à»Ñò.
+O
+java:S16590"-Declare "rightToLeftAnim" on a separate line.(ÿöÿÿÿÿÿ8ù‹‚Óò.
+z
+java:S14502"]Remove the "packageManager" field and declare it as a local variable in the relevant methods.(†¢õ„8ù‹‚Óò.
+f
+java:S1854n"DRemove this useless assignment to local variable "showToastMessage".(§ò”äúÿÿÿÿ8ù‹‚Óò.
+{	java:S135³"YReduce the total number of break and continue statements in this loop to use at most one.(÷Á¯ªøÿÿÿÿ8ŞÖ™Óò.
+`
+java:S1854S">Remove this useless assignment to local variable "controller".(©ÃÃ°ûÿÿÿÿ8ù‹‚Óò.
+h
+java:S2147‡"ECombine this catch with the one at line 133, which has the same body.(¼¯•¶ùÿÿÿÿ8ù‹‚Óò.
+c
+java:S2147‰"ECombine this catch with the one at line 133, which has the same body.(Å¡ß8ù‹‚Óò.
+}
+java:S14504"`Remove the "preferenceManager" field and declare it as a local variable in the relevant methods.(ËĞ«š8ÿÛÒÓò.
+Q
+java:S1481S"/Remove this unused "controller" local variable.(©ÃÃ°ûÿÿÿÿ8ù‹‚Óò.
+W
+java:S1481n"5Remove this unused "showToastMessage" local variable.(§ò”äúÿÿÿÿ8ù‹‚Óò.
+G
+java:S1068*"+Remove this unused "context" private field.(êİç8›ˆ¤Ôò.
