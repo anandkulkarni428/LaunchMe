@@ -1,0 +1,13 @@
+
+?
+java:S1116Š"Remove this empty statement.(Åñ­õşÿÿÿÿ8Ò‰Ñ±ò.
+n	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(öç†”üÿÿÿÿ8İ­‹©ò.
+R
+java:S1854r"5Remove this useless assignment to local variable "s".(°”Ô8ÌÖ€±ò.
+J
+java:S16048"(Make this anonymous inner class a lambda(°Ô²·ıÿÿÿÿ8İ­‹©ò.
+i	java:S101a"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¤şéÇ8Ò‰Ñ±ò.
+C
+java:S1481r"&Remove this unused "s" local variable.(°”Ô8ÌÖ€±ò.
+K
+java:S1905p")Remove this unnecessary cast to "String".(÷ ó²øÿÿÿÿ8éÙÿ°ò.
