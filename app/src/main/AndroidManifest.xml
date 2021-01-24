@@ -16,11 +16,15 @@
         android:roundIcon="@drawable/launch_me_logo_1"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Holo.Light.NoActionBar">
-        <activity android:name=".AppSettings.SettingsActivity"/>
+        <activity android:name=".AppSettings.SettingsActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Home.MainActivity"
             android:launchMode="singleTask"
-            android:stateNotNeeded="true">
+            android:stateNotNeeded="true"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +33,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".Apps.GetApps" />
+        <activity android:name=".Apps.GetApps"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
 
 
         <receiver

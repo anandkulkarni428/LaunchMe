@@ -124,7 +124,8 @@ public class MainActivity extends Activity implements SimpleGestureFilter.Simple
         switch (direction) {
 
             case SimpleGestureFilter.SWIPE_RIGHT:
-                getRunningTasks();
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                startActivity(intent);
                 break;
             case SimpleGestureFilter.SWIPE_LEFT:
                 displayAllApps();
@@ -166,8 +167,7 @@ public class MainActivity extends Activity implements SimpleGestureFilter.Simple
 
         screenlock();
 
-//        Intent intent = new Intent(Intent.ACTION_DIAL);
-//        startActivity(intent);
+
 
     }
 
