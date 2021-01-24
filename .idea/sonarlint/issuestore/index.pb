@@ -15,3 +15,9 @@ f
 6app/src/main/java/com/anand/launchme/Apps/GetApps.java,5\a\5a9a7589b95ed5d4434f240bb74cdc0ab99a54be
 v
 Fapp/src/main/java/com/anand/launchme/appSettings/SettingsActivity.java,0\9\09cbe38862f8515fef5967ab2afb3bf9adefc6ef
+v
+Fapp/src/main/java/com/anand/launchme/AppSettings/SettingsActivity.java,2\d\2d49f227d704b8e5f773775c308210f954201c4c
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+k
+;app/src/main/java/com/anand/launchme/Home/MainActivity.java,3\f\3f26512bbe39e65f20d7a18dc93119575a5106cc

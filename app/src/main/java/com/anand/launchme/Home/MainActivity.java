@@ -1,8 +1,11 @@
-package com.anand.launchme.home;
+package com.anand.launchme.Home;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.WallpaperManager;
+import android.app.admin.DevicePolicyManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -21,15 +24,19 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.anand.launchme.Apps.GetApps;
 import com.anand.launchme.R;
+import com.anand.launchme.Utills.AppPreferences;
 import com.anand.launchme.Utills.PreferenceManager;
-import com.anand.launchme.adadters.myListAdap;
-import com.anand.launchme.appinfo.AppInfo;
+import com.anand.launchme.Adadters.myListAdap;
+import com.anand.launchme.Appinfo.AppInfo;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -50,10 +57,15 @@ public class MainActivity extends Activity implements SimpleGestureFilter.Simple
     private PackageManager packageManager;
     private ActivityManager mActivityManager;
     private PreferenceManager preferenceManager;
+    private DevicePolicyManager deviceManger;
+    ComponentName compName;
+
 
     private List<AppInfo> apps;
 
     private String gridCount;
+
+    static final int RESULT_ENABLE = 1;
 
 
     @Override
@@ -61,6 +73,11 @@ public class MainActivity extends Activity implements SimpleGestureFilter.Simple
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+
+        deviceManger = (DevicePolicyManager)
+                getSystemService(Context.DEVICE_POLICY_SERVICE);
+        compName = new ComponentName(this, DeviceAdmin.class);
+        boolean active = deviceManger.isAdminActive(compName);
 
 
         preferenceManager = new PreferenceManager(MainActivity.this);
@@ -80,18 +97,13 @@ public class MainActivity extends Activity implements SimpleGestureFilter.Simple
 
         imageView.startAnimation(startAnimation);
 
+
+        ActivityCompat.requestPermissions(MainActivity.this,
+                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                1);
+
         final LayoutAnimationController controller = new LayoutAnimationController(startAnimation, 0.2f);
 
-
-        WallpaperManager wallpaperManager = WallpaperManager.getInstance(this);
-        final Drawable wallpaperDrawable = wallpaperManager.getDrawable();
-        relativeLayout.post(new Runnable() {
-
-            @Override
-            public void run() {
-                relativeLayout.setBackground(wallpaperDrawable);
-            }
-        });
 
     }
 
@@ -152,15 +164,31 @@ public class MainActivity extends Activity implements SimpleGestureFilter.Simple
     @Override
     public void onDoubleTap() {
 
-        Intent intent = new Intent(Intent.ACTION_DIAL);
-        startActivity(intent);
+        screenlock();
+
+//        Intent intent = new Intent(Intent.ACTION_DIAL);
+//        startActivity(intent);
 
     }
 
     public void showApps() {
         Intent i = new Intent(MainActivity.this, GetApps.class);
         i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        i.putExtra("GRID_NO", "5");
+
+        if (gridCount == null) {
+            if (AppPreferences.Key.GRID_NO == null) {
+                gridCount = "5";
+            } else {
+                gridCount = AppPreferences.getInstance(getApplicationContext()).getString(AppPreferences.Key.GRID_NO);
+            }
+
+        } else {
+            gridCount = AppPreferences.getInstance(getApplicationContext()).getString(AppPreferences.Key.GRID_NO);
+        }
+
+        Log.d("TAG_NULL", gridCount + "");
+
+        i.putExtra("GRID_NO", gridCount);
         startActivity(i);
     }
 
@@ -238,6 +266,63 @@ public class MainActivity extends Activity implements SimpleGestureFilter.Simple
     public void onBackPressed() {
         detector.setEnabled(true);
         rootCardView.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 1: {
+
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    WallpaperManager wallpaperManager = WallpaperManager.getInstance(this);
+                    final Drawable wallpaperDrawable = wallpaperManager.getDrawable();
+                    relativeLayout.post(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            relativeLayout.setBackground(wallpaperDrawable);
+                        }
+                    });
+
+                } else {
+
+                    relativeLayout.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.wallpaper_2));
+
+                    Toast.makeText(MainActivity.this, "Permission denied to read your External storage so you cannot set your own wallpaper", Toast.LENGTH_LONG).show();
+                }
+                return;
+            }
+
+        }
+    }
+
+    public void screenlock() {
+        Intent intent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
+        intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, compName);
+        intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION, "You should enable the app!");
+        startActivityForResult(intent, RESULT_ENABLE);
+        deviceManger.lockNow();
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent
+            data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case RESULT_ENABLE:
+                if (resultCode == Activity.RESULT_OK) {
+                    Toast.makeText(getApplicationContext(), "Success!",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Failed!",
+                            Toast.LENGTH_SHORT).show();
+                }
+                return;
+        }
     }
 
 }

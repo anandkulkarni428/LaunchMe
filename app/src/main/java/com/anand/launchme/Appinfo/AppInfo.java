@@ -1,4 +1,4 @@
-package com.anand.launchme.appinfo;
+package com.anand.launchme.Appinfo;
 
 import android.graphics.drawable.Drawable;
 

@@ -1,5 +1,6 @@
 package com.anand.launchme.Apps;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.WallpaperManager;
 import android.content.Context;
@@ -21,15 +22,17 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.anand.launchme.R;
-import com.anand.launchme.adadters.myListAdap;
-import com.anand.launchme.appSettings.SettingsActivity;
-import com.anand.launchme.appinfo.AppInfo;
-import com.anand.launchme.home.MainActivity;
+import com.anand.launchme.Adadters.myListAdap;
+import com.anand.launchme.AppSettings.SettingsActivity;
+import com.anand.launchme.Appinfo.AppInfo;
+import com.anand.launchme.Home.MainActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -75,15 +78,11 @@ public class GetApps extends Activity {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(GetApps.this, spanCount, RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(gridLayoutManager);
 
-        WallpaperManager wallpaperManager = WallpaperManager.getInstance(this);
-        final Drawable wallpaperDrawable = wallpaperManager.getDrawable();
-        rootLayout.post(new Runnable() {
+        ActivityCompat.requestPermissions(GetApps.this,
+                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                1);
 
-            @Override
-            public void run() {
-                rootLayout.setBackground(wallpaperDrawable);
-            }
-        });
+
 
         apps = null;
         adapter = null;
@@ -190,5 +189,41 @@ public class GetApps extends Activity {
         GetApps.this.startActivity(i);
     }
 
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 1: {
+
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    WallpaperManager wallpaperManager = WallpaperManager.getInstance(this);
+                    final Drawable wallpaperDrawable = wallpaperManager.getDrawable();
+                    rootLayout.post(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            rootLayout.setBackground(wallpaperDrawable);
+                        }
+                    });
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                } else {
+
+                    rootLayout.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.wallpaper_2));
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                    Toast.makeText(GetApps.this, "Permission denied to read your External storage so you cannot set your own wallpaper", Toast.LENGTH_LONG).show();
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
+    }
 
 }
