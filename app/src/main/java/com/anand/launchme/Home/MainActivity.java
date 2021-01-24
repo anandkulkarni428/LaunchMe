@@ -271,21 +271,16 @@ public class MainActivity extends Activity implements SimpleGestureFilter.Simple
                             relativeLayout.setBackground(wallpaperDrawable);
                         }
                     });
-                    // permission was granted, yay! Do the
-                    // contacts-related task you need to do.
+
                 } else {
 
                     relativeLayout.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.wallpaper_1));
 
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
                     Toast.makeText(MainActivity.this, "Permission denied to read your External storage so you cannot set your own wallpaper", Toast.LENGTH_LONG).show();
                 }
                 return;
             }
 
-            // other 'case' lines to check for other
-            // permissions this app might request
         }
     }
 
