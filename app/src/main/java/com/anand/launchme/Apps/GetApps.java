@@ -212,7 +212,7 @@ public class GetApps extends Activity {
                     // contacts-related task you need to do.
                 } else {
 
-                    rootLayout.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.wallpaper_1));
+                    rootLayout.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.wallpaper_2));
 
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.

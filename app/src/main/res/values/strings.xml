@@ -3,4 +3,5 @@
     <string name="search_apps">Search apps</string>
     <string name="author">Designed and Developed by : \n Anand Kulkarni</string>
     <string name="grid_no">GRID NO</string>
+    <string name="app_description"></string>
 </resources>
