@@ -34,6 +34,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.anand.launchme.Apps.GetApps;
 import com.anand.launchme.R;
 import com.anand.launchme.Utills.AppPreferences;
+import com.anand.launchme.Utills.DeviceAdmin;
 import com.anand.launchme.Utills.PreferenceManager;
 import com.anand.launchme.Adadters.myListAdap;
 import com.anand.launchme.Appinfo.AppInfo;
@@ -168,19 +169,14 @@ public class MainActivity extends Activity implements SimpleGestureFilter.Simple
         screenlock();
 
 
-
     }
 
     public void showApps() {
         Intent i = new Intent(MainActivity.this, GetApps.class);
         i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 
-        if (gridCount == null) {
-            if (AppPreferences.Key.GRID_NO == null) {
-                gridCount = "5";
-            } else {
-                gridCount = AppPreferences.getInstance(getApplicationContext()).getString(AppPreferences.Key.GRID_NO);
-            }
+        if (gridCount == null && AppPreferences.getInstance(getApplicationContext()).getString(AppPreferences.Key.GRID_NO).equals("4")) {
+            gridCount = "4";
 
         } else {
             gridCount = AppPreferences.getInstance(getApplicationContext()).getString(AppPreferences.Key.GRID_NO);

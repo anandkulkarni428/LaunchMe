@@ -33,6 +33,7 @@ import com.anand.launchme.Adadters.myListAdap;
 import com.anand.launchme.AppSettings.SettingsActivity;
 import com.anand.launchme.Appinfo.AppInfo;
 import com.anand.launchme.Home.MainActivity;
+import com.anand.launchme.Utills.AppPreferences;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -45,6 +46,7 @@ public class GetApps extends Activity {
     private RelativeLayout rootLayout;
     private RecyclerView recyclerView;
     private ImageView settingsBtnImg;
+    private boolean appName = true;
 
     private PackageManager packageManager;
     private Animation startAnimation;
@@ -70,7 +72,7 @@ public class GetApps extends Activity {
 
         gridCount = getIntent().getStringExtra("GRID_NO");
         spanCount = Integer.parseInt(gridCount);
-        Log.d("TAG_NO2", spanCount + "");
+        Log.d("TAG_NO2", spanCount + gridCount);
 
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(GetApps.this, RecyclerView.VERTICAL, true);
@@ -88,6 +90,8 @@ public class GetApps extends Activity {
         adapter = null;
         loadApps();
         loadNewListView();
+
+        Log.d("TAG_BOOL", AppPreferences.Key.App_Name +"");
 
         startAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.down_to_up);
@@ -129,9 +133,6 @@ public class GetApps extends Activity {
             @Override
             public void afterTextChanged(Editable editable) {
 
-                Log.d("TAG_APP", "**********Message : " + editable.toString());
-
-                System.out.print("******************************************editable.toString()=" + editable.toString());
 
                 try {
                     if (listAdap != null) {

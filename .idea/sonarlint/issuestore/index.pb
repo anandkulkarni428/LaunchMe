@@ -21,3 +21,9 @@ Fapp/src/main/java/com/anand/launchme/AppSettings/SettingsActivity.java,2\d\2d4
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 k
 ;app/src/main/java/com/anand/launchme/Home/MainActivity.java,3\f\3f26512bbe39e65f20d7a18dc93119575a5106cc
+r
+Bapp/src/main/java/com/anand/launchme/Home/SimpleGestureFilter.java,4\2\42e5cd7f154a5c3ea6617b3b26bf324a2b666852
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+j
+:app/src/main/java/com/anand/launchme/Home/DeviceAdmin.java,a\6\a6ac6deb1fc86fe80adf11e53fba512965a7ad13

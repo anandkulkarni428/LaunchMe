@@ -1,44 +1,44 @@
 
-F
-java:S1604Ì"(Make this anonymous inner class a lambda(ØÙ£¾8å…òÏò.
-P
-java:S1199Å"-Extract this nested code block into a method.(·ÿ½äûÿÿÿÿ8ˆ¤Èøò.
-U
-java:S1481L"8Remove this unused "linearLayoutManager" local variable.(›¯–8å…òÏò.
-H
-java:S10687"+Remove this unused "adapter" private field.(¢«Ü¡8¥ºÀËò.
-z
-java:S14501"]Remove the "packageManager" field and declare it as a local variable in the relevant methods.(†¢õ„8ÄØÃËò.
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(€ú’Àıÿÿÿÿ8Üù´Ëò.
-
-java:S1186y"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(á¬‡İ8å…òÏò.
-J
-java:S1604c"(Make this anonymous inner class a lambda(êİÈÔÿÿÿÿÿ8å…òÏò.
 s
 java:S14507"VRemove the "adapter" field and declare it as a local variable in the relevant methods.(¢«Ü¡8¥ºÀËò.
-[	java:S106†"9Replace this use of System.out or System.err by a logger.(¿–¾òşÿÿÿÿ8å…òÏò.
-9
-java:S3626İ"Remove this redundant jump.(ûÁİ…8ˆ¤Èøò.
-z
-java:S1450/"]Remove the "settingsBtnImg" field and declare it as a local variable in the relevant methods.(’Ñ†Ê8ÊËò.
 
 java:S1186~"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Œğ£Â8å…òÏò.
 d
 java:S1854L"GRemove this useless assignment to local variable "linearLayoutManager".(›¯–8å…òÏò.
+a
+java:S1858²"D"getMessage" returns a string, there's no need to call "toString()".(˜ƒ¬+8Í¢–¯ò.
+n
+java:S1301Ä"KReplace this "switch" statement by "if" statements to increase readability.(×ö³–úÿÿÿÿ8ˆ¤Èøò.
+
+java:S1186y"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(á¬‡İ8å…òÏò.
+
+java:S14502"]Remove the "startAnimation" field and declare it as a local variable in the relevant methods.(ŞŞËúÿÿÿÿ8ÄØÃËò.
+u
+java:S14509"XRemove the "spanCount" field and declare it as a local variable in the relevant methods.(ƒÊ£Õ8§€şÒò.
+[	java:S106†"9Replace this use of System.out or System.err by a logger.(¿–¾òşÿÿÿÿ8å…òÏò.
+D	java:S131Ä""Add a default case to this switch.(×ö³–úÿÿÿÿ8ˆ¤Èøò.
+H
+java:S10687"+Remove this unused "adapter" private field.(¢«Ü¡8¥ºÀËò.
+F
+java:S1604Ì"(Make this anonymous inner class a lambda(ØÙ£¾8å…òÏò.
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(€ú’Àıÿÿÿÿ8Üù´Ëò.
 b
 java:S1858±"D"getMessage" returns a string, there's no need to call "toString()".(¬œ€Â8ˆ¤Èøò.
 G
 java:S1068+"+Remove this unused "context" private field.(êİç8Ô÷ßËò.
-
-java:S14502"]Remove the "startAnimation" field and declare it as a local variable in the relevant methods.(ŞŞËúÿÿÿÿ8ÄØÃËò.
 [
 java:S1197Ã"8Move the array designator from the variable to the type.(ÿÃ²şÿÿÿÿ8ˆ¤Èøò.
+z
+java:S1450/"]Remove the "settingsBtnImg" field and declare it as a local variable in the relevant methods.(’Ñ†Ê8ÊËò.
+9
+java:S3626İ"Remove this redundant jump.(ûÁİ…8ˆ¤Èøò.
 w
 java:S2293Ÿ"YReplace the type specification in this constructor call with the diamond operator ("<>").(¯¦Ûç8å…òÏò.
-u
-java:S14509"XRemove the "spanCount" field and declare it as a local variable in the relevant methods.(ƒÊ£Õ8§€şÒò.
-D	java:S131Ä""Add a default case to this switch.(×ö³–úÿÿÿÿ8ˆ¤Èøò.
-n
-java:S1301Ä"KReplace this "switch" statement by "if" statements to increase readability.(×ö³–úÿÿÿÿ8ˆ¤Èøò.
-a
-java:S1858²"D"getMessage" returns a string, there's no need to call "toString()".(˜ƒ¬+8Í¢–¯ò.
+U
+java:S1481L"8Remove this unused "linearLayoutManager" local variable.(›¯–8å…òÏò.
+P
+java:S1199Å"-Extract this nested code block into a method.(·ÿ½äûÿÿÿÿ8ˆ¤Èøò.
+J
+java:S1604c"(Make this anonymous inner class a lambda(êİÈÔÿÿÿÿÿ8å…òÏò.
+z
+java:S14501"]Remove the "packageManager" field and declare it as a local variable in the relevant methods.(†¢õ„8ÄØÃËò.
