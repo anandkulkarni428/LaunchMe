@@ -10,4 +10,4 @@
     android:textStyle="bold"
     android:padding="5dip"
     android:textAlignment="center"
-    android:background="@drawable/grade_4"/>
+    android:background="@color/black"/>

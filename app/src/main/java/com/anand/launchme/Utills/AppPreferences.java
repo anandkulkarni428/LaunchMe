@@ -36,7 +36,7 @@ public class AppPreferences {
      */
     public static class Key {
         public static final String GRID_NO = "grid_no";
-        public static final String LOGGED = "user_logged_in";
+        public static final boolean App_Name = true;
 
     }
 
