@@ -35,7 +35,7 @@ public class AppPreferences {
      * Class for keeping all the keys used for shared preferences in one place.
      */
     public static class Key {
-        public static final String GRID_NO = "grid_no";
+        public static final String CURRENT_GRID_NO = "grid_no";
         public static final boolean App_Name = true;
 
     }

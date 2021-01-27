@@ -217,7 +217,6 @@ public class GetApps extends Activity {
 
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
-                    Toast.makeText(GetApps.this, "Permission denied to read your External storage so you cannot set your own wallpaper", Toast.LENGTH_LONG).show();
                 }
                 return;
             }

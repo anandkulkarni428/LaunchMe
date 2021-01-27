@@ -113,7 +113,7 @@ public class myListAdap extends RecyclerView.Adapter<myListAdap.ViewHolder> impl
 
                     final String s = String.valueOf(s2);
 
-                    if (source.toLowerCase().startsWith(filterPattern)) {
+                    if (source.toLowerCase().contains(filterPattern)) {
                         filteredList.add(info);
                     }
 

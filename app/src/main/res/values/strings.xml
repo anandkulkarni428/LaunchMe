@@ -5,4 +5,5 @@
     <string name="grid_no">GRID NO</string>
     <string name="app_description"></string>
     <string name="show_application_name">Show Application Name</string>
+    <string name="background">Background</string>
 </resources>

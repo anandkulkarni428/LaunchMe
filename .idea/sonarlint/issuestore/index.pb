@@ -25,5 +25,13 @@ r
 Bapp/src/main/java/com/anand/launchme/Home/SimpleGestureFilter.java,4\2\42e5cd7f154a5c3ea6617b3b26bf324a2b666852
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
-j
-:app/src/main/java/com/anand/launchme/Home/DeviceAdmin.java,a\6\a6ac6deb1fc86fe80adf11e53fba512965a7ad13
+o
+?app/src/main/java/com/anand/launchme/Utills/AppPreferences.java,3\4\34c901cee2aabe1aad5e5943fc0ddc58803e36cd
+l
+<app/src/main/java/com/anand/launchme/Utills/DeviceAdmin.java,e\f\efc7e6a1e307702e712c26188dd2e074d8225b47
+X
+(app/src/main/res/layout/spinner_item.xml,1\2\127bad23c82c1b95b06c4bd8d5d1df5248e01d98
+S
+#app/src/main/res/values/strings.xml,d\2\d2281fbb3027de2722081a53408dd77628bf080e
+m
+=app/src/main/java/com/anand/launchme/Adadters/myListAdap.java,7\6\76bc6aa26bda1c4551243682fe90010f2c2dff21

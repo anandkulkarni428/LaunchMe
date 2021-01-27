@@ -31,13 +31,13 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.anand.launchme.Adadters.myListAdap;
+import com.anand.launchme.Appinfo.AppInfo;
 import com.anand.launchme.Apps.GetApps;
 import com.anand.launchme.R;
 import com.anand.launchme.Utills.AppPreferences;
 import com.anand.launchme.Utills.DeviceAdmin;
 import com.anand.launchme.Utills.PreferenceManager;
-import com.anand.launchme.Adadters.myListAdap;
-import com.anand.launchme.Appinfo.AppInfo;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -172,20 +172,28 @@ public class MainActivity extends Activity implements SimpleGestureFilter.Simple
     }
 
     public void showApps() {
-        Intent i = new Intent(MainActivity.this, GetApps.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 
-        if (gridCount == null && AppPreferences.getInstance(getApplicationContext()).getString(AppPreferences.Key.GRID_NO).equals("4")) {
-            gridCount = "4";
+        try {
+            Intent i = new Intent(MainActivity.this, GetApps.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 
-        } else {
-            gridCount = AppPreferences.getInstance(getApplicationContext()).getString(AppPreferences.Key.GRID_NO);
+            if (gridCount == null) {
+                gridCount = "4";
+
+            } else if (AppPreferences.Key.CURRENT_GRID_NO != "4") {
+                gridCount = AppPreferences.getInstance(getApplicationContext()).getString(AppPreferences.Key.CURRENT_GRID_NO);
+            } else {
+                gridCount = AppPreferences.getInstance(getApplicationContext()).getString(AppPreferences.Key.CURRENT_GRID_NO);
+            }
+
+            Log.d("TAG_NULL", gridCount + "");
+
+            i.putExtra("GRID_NO", gridCount);
+            startActivity(i);
+        } catch (Exception e) {
+            Log.e("TAG_ERROR_SHOW_APPS", e.getMessage());
         }
 
-        Log.d("TAG_NULL", gridCount + "");
-
-        i.putExtra("GRID_NO", gridCount);
-        startActivity(i);
     }
 
     public void getRunningTasks() {
@@ -287,7 +295,6 @@ public class MainActivity extends Activity implements SimpleGestureFilter.Simple
 
                     relativeLayout.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.wallpaper_2));
 
-                    Toast.makeText(MainActivity.this, "Permission denied to read your External storage so you cannot set your own wallpaper", Toast.LENGTH_LONG).show();
                 }
                 return;
             }
@@ -296,11 +303,17 @@ public class MainActivity extends Activity implements SimpleGestureFilter.Simple
     }
 
     public void screenlock() {
-        Intent intent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
-        intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, compName);
-        intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION, "You should enable the app!");
-        startActivityForResult(intent, RESULT_ENABLE);
-        deviceManger.lockNow();
+
+        try {
+            Intent intent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
+            intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, compName);
+            intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION, "You should enable the app!");
+            startActivityForResult(intent, RESULT_ENABLE);
+            deviceManger.lockNow();
+        } catch (Exception e) {
+            Log.e("TAG_LOCK_ERROR", e.getMessage());
+        }
+
     }
 
 
@@ -321,4 +334,27 @@ public class MainActivity extends Activity implements SimpleGestureFilter.Simple
         }
     }
 
+
+    @Override
+    protected void onResume() {
+
+        try {
+            if (gridCount == null) {
+                gridCount = "4";
+
+            } else if (AppPreferences.Key.CURRENT_GRID_NO != "4") {
+                gridCount = AppPreferences.getInstance(getApplicationContext()).getString(AppPreferences.Key.CURRENT_GRID_NO);
+            } else {
+                gridCount = AppPreferences.getInstance(getApplicationContext()).getString(AppPreferences.Key.CURRENT_GRID_NO);
+            }
+
+            Log.d("TAG_NULL", gridCount + "");
+        } catch (Exception e){
+            Log.e("TAG Error resume : ",e.getMessage());
+        }
+
+
+
+        super.onResume();
+    }
 }

@@ -60,7 +60,7 @@ public class SettingsActivity extends Activity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 preferenceManager.setSelection(position);
                 gridCurrentNo = parent.getItemAtPosition(position).toString();
-                AppPreferences.getInstance(getApplicationContext()).put(AppPreferences.Key.GRID_NO, gridCurrentNo);
+                AppPreferences.getInstance(getApplicationContext()).put(AppPreferences.Key.CURRENT_GRID_NO, gridCurrentNo);
 
             }
 
@@ -68,27 +68,29 @@ public class SettingsActivity extends Activity {
             public void onNothingSelected(AdapterView<?> parent) {
                 gridNospinner.setSelection(preferenceManager.getSelection());
                 prefPosition = preferenceManager.getSelection();
-                AppPreferences.getInstance(getApplicationContext()).put(AppPreferences.Key.GRID_NO, String.valueOf(prefPosition));
+                AppPreferences.getInstance(getApplicationContext()).put(AppPreferences.Key.CURRENT_GRID_NO, String.valueOf(prefPosition));
             }
         });
 
 
         gridCurrentNo = String.valueOf(prefPosition);
 
-        if (appName){
-            applicationNameswitch.setChecked(true);
-        } else {
-            applicationNameswitch.setChecked(false);
-        }
+
 
         applicationNameswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 appName = b;
                 Toast.makeText(SettingsActivity.this, "" + b, Toast.LENGTH_SHORT).show();
-                AppPreferences.getInstance(getApplicationContext()).put(AppPreferences.Key.GRID_NO, appName);
+//                AppPreferences.getInstance(getApplicationContext()).put(AppPreferences.Key.GRID_NO, appName);
             }
         });
+
+        if (appName){
+            applicationNameswitch.setChecked(true);
+        } else {
+            applicationNameswitch.setChecked(false);
+        }
     }
 
 
