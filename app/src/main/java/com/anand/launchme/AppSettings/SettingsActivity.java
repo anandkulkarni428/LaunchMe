@@ -23,7 +23,7 @@ public class SettingsActivity extends Activity {
 
     private String gridCurrentNo;
     private int prefPosition;
-    private boolean appName = true;
+    public static boolean appName;
 
     private Spinner gridNospinner;
     private Switch applicationNameswitch;
@@ -75,22 +75,35 @@ public class SettingsActivity extends Activity {
 
         gridCurrentNo = String.valueOf(prefPosition);
 
+        if (appName) {
+            applicationNameswitch.setChecked(true);
+        } else {
+            applicationNameswitch.setChecked(false);
+        }
 
 
         applicationNameswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                appName = b;
-                Toast.makeText(SettingsActivity.this, "" + b, Toast.LENGTH_SHORT).show();
+
+//                Toast.makeText(SettingsActivity.this, "" + b, Toast.LENGTH_SHORT).show();
+
+                if (applicationNameswitch.isChecked()) {
+                    appName = b;
+                } else {
+                    appName = b;
+                }
+
+//                if (appName){
+//                    applicationNameswitch.setChecked(true);
+//                } else {
+//                    applicationNameswitch.setChecked(false);
+//                }
 //                AppPreferences.getInstance(getApplicationContext()).put(AppPreferences.Key.GRID_NO, appName);
             }
         });
 
-        if (appName){
-            applicationNameswitch.setChecked(true);
-        } else {
-            applicationNameswitch.setChecked(false);
-        }
+
     }
 
 
@@ -99,6 +112,7 @@ public class SettingsActivity extends Activity {
         super.onBackPressed();
         Intent intent = new Intent(SettingsActivity.this, GetApps.class);
         intent.putExtra("GRID_NO", gridCurrentNo);
+        intent.putExtra("APP_NAME", appName);
         Log.d("TAG_NO", gridCurrentNo + "");
         startActivity(intent);
     }

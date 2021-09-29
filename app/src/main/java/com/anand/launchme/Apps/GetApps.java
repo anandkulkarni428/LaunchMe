@@ -46,7 +46,7 @@ public class GetApps extends Activity {
     private RelativeLayout rootLayout;
     private RecyclerView recyclerView;
     private ImageView settingsBtnImg;
-    private boolean appName = true;
+    private boolean appName = false ;
 
     private PackageManager packageManager;
     private Animation startAnimation;
@@ -72,6 +72,7 @@ public class GetApps extends Activity {
 
         gridCount = getIntent().getStringExtra("GRID_NO");
         spanCount = Integer.parseInt(gridCount);
+        appName = Boolean.parseBoolean(getIntent().getStringExtra("APP_NAME"));
         Log.d("TAG_NO2", spanCount + gridCount);
 
 

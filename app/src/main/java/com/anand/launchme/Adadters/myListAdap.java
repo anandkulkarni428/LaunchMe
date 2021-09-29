@@ -12,10 +12,12 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.anand.launchme.AppSettings.SettingsActivity;
 import com.anand.launchme.R;
 import com.anand.launchme.Appinfo.AppInfo;
 
@@ -27,6 +29,7 @@ public class myListAdap extends RecyclerView.Adapter<myListAdap.ViewHolder> impl
     Context context;
     private List<AppInfo> apps;
     private List<AppInfo> searchApps;
+    private List<CharSequence> homeApps;
     PackageManager packageManager;
     searchFilter searchFilter;
 
@@ -34,6 +37,7 @@ public class myListAdap extends RecyclerView.Adapter<myListAdap.ViewHolder> impl
         this.apps = apps;
         this.context = context;
         searchApps = new ArrayList<>(apps);
+        homeApps = new ArrayList<CharSequence>();
         packageManager = context.getPackageManager();
     }
 
@@ -53,11 +57,27 @@ public class myListAdap extends RecyclerView.Adapter<myListAdap.ViewHolder> impl
         if (appInfo != null) {
             holder.appImg.setImageDrawable(appInfo.icon);
             holder.appNametxt.setText(appInfo.label);
+            if (SettingsActivity.appName){
+                holder.appNametxt.setVisibility(View.VISIBLE);
+            } else {
+                holder.appNametxt.setVisibility(View.GONE);
+                holder.rootCard.setPadding(10,10,10,10);
+            }
             holder.rootCard.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = packageManager.getLaunchIntentForPackage(apps.get(position).name.toString());
                     context.startActivity(intent);
+                }
+            });
+            
+            holder.rootCard.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    Toast.makeText(context, "Long Press", Toast.LENGTH_SHORT).show();
+                    homeApps.add(appInfo.label);
+                    Log.d("TAG",homeApps.size()+"Size");
+                    return true;
                 }
             });
         }
